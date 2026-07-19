@@ -38,11 +38,11 @@ class Instance():
         out_file = open(os.path.join(self.config.avd_log_dir, f'emulator_output_{self.idx}.txt'), 'a')
 
         if self.config.show_avd:
-            emulator_process = subprocess.Popen(["emulator", "-avd", avd_name, "-no-snapshot-save"], stdout=out_file,
+            emulator_process = subprocess.Popen(["emulator", "-avd", avd_name, "-no-snapshot-save", "-gpu", "guest"], stdout=out_file,
                                                 stderr=out_file)
         else:
             emulator_process = subprocess.Popen(
-                ["emulator", "-avd", avd_name, "-no-snapshot-save", "-no-window", "-no-audio"], stdout=out_file,
+                ["emulator", "-avd", avd_name, "-no-snapshot-save", "-no-window", "-no-audio", "-gpu", "guest"], stdout=out_file,
                 stderr=out_file)
         print_with_color(f"Waiting for the emulator to start...", "blue")
         while True:
