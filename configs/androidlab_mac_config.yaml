@@ -1,0 +1,22 @@
+agent:
+  name: OpenAIAgent
+  args:
+    api_key: "autosop-local"
+    api_base: "http://localhost:8765/v1"
+    model_name: "autosop"
+    max_new_tokens: 512
+
+task:
+  class: ScreenshotMobileTask_AutoTest
+  args:
+    save_dir: "./logs/evaluation"
+    max_rounds: 25
+    request_interval: 3
+    mode: "in_app"
+
+eval:
+  avd_base: /Users/moonshot/.android/avd
+  avd_name: Pixel_10
+  avd_log_dir: ./logs/evaluation
+  android_sdk_path: /Users/moonshot/Library/Android/sdk
+  show_avd: false
